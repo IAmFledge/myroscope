@@ -1,5 +1,6 @@
 {
   "name": "myroscope",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+  }
 }
