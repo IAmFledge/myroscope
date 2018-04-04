@@ -1,0 +1,7 @@
+AllCops:
+  Exclude:
+    - config/unicorn.rb
+    - db/schema.rb
+Metrics/MethodLength:
+  Exclude:
+      - db/migrate/*
