@@ -1,0 +1,2 @@
+module Tracking::GeoHelper
+end
