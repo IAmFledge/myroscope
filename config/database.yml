@@ -22,6 +22,7 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  schema_search_path: public, postgis
 
 development:
   <<: *default
@@ -82,6 +83,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV.fetch('DATABASE_URL', '').sub(/^postgres/, "postgis") %>
   database: myroscope_production
   username: myroscope
   password: <%= ENV['MYROSCOPE_DATABASE_PASSWORD'] %>
