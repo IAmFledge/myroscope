@@ -1,0 +1,2 @@
+class GeoSegment < ApplicationRecord
+end

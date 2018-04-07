@@ -24,6 +24,8 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'font-awesome-rails'
 gem 'slim'
 
+gem 'activerecord-postgis-adapter'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster.

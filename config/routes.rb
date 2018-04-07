@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root to: 'dashboard#index'
 
   namespace :tracking do
-    resources :geo # , only: :create
+    resources :geo, only: :create
   end
 end
