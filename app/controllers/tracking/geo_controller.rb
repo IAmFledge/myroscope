@@ -5,7 +5,7 @@ module Tracking
     def create
       puts request.body.to_json
 
-      render json: { 'result': ENV.fetch 'OK_RESPONSE', 'ok' }
+      render json: { 'result': ENV.fetch('OK_RESPONSE', 'ok') }
     end
   end
 end
