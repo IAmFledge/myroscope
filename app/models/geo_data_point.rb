@@ -3,5 +3,5 @@ class GeoDataPoint < ApplicationRecord
   enum battery_state: [:unknown, :unplugged, :charging, :full]
 
   belongs_to :user
-  belongs_to :geo_segment
+  belongs_to :geo_segment, optional: true
 end

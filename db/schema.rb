@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180407152215) do
     t.integer "speed"
     t.integer "horizontal_accuracy"
     t.integer "vertical_accuracy"
-    t.integer "motion", array: true
+    t.integer "motion"
     t.integer "battery_state"
     t.integer "battery_level"
     t.string "wifi"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20180407152215) do
   create_table "geo_segments", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "type"
+    t.integer "activity_detected"
+    t.integer "activity_selected"
     t.datetime "started_at"
     t.datetime "ended_at"
     t.integer "duration"
@@ -60,6 +62,8 @@ ActiveRecord::Schema.define(version: 20180407152215) do
     t.integer "battery_usage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["ended_at"], name: "index_geo_segments_on_ended_at"
+    t.index ["started_at"], name: "index_geo_segments_on_started_at"
     t.index ["user_id"], name: "index_geo_segments_on_user_id"
   end
 

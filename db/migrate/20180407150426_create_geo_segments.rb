@@ -6,6 +6,9 @@ class CreateGeoSegments < ActiveRecord::Migration[5.1]
 
       t.integer :type # [:motion, :place]
 
+      t.integer :activity_detected
+      t.integer :activity_selected
+
       t.datetime :started_at
       t.datetime :ended_at
 

@@ -1,3 +1,12 @@
 h1 Geo
 
-= ap @geo.location
+- unless @geos.blank?
+  - gas = @geos.first.attributes.keys
+  table
+    tr
+    - gas.each do |att|
+      th= att.titleize
+    - @geos.each do |geo|
+      tr
+        - gas.each do |gatt|
+          td= geo.send(gatt)

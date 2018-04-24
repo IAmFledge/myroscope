@@ -3,6 +3,7 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @geo = GeoDataPoint.first
+    # GeoDataPoint.delete_all
+    @geos = GeoDataPoint.where(user: current_user)
   end
 end

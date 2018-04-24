@@ -17,7 +17,7 @@ class CreateGeoDataPoints < ActiveRecord::Migration[5.1]
       t.integer :vertical_accuracy
 
       # [:stationary, :walking, :running, :cycling, :driving]
-      t.integer :motion, array: true
+      t.integer :motion
 
       # [:unknown, :unplugged, :charging, :full]
       t.integer :battery_state
@@ -27,7 +27,7 @@ class CreateGeoDataPoints < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    
+
     add_index :geo_data_points, :location, using: :gist
   end
 end
