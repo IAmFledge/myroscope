@@ -6,9 +6,8 @@ class GeoSegment < ApplicationRecord
     :transport, :underground, :cross_country_skiing, :downhill_skiing,
     :golfing, :kayaking, :paddling, :paintball, :riding, :roller_skiing,
     :rollerblading, :rollerskating, :rowing, :skateboarding, :skating,
-    :snowboarding, :snowshoeing, :wheel_chair, :soccer, :squash,
-    :stair_climbing, :surfing, :swimming, :tennis, :volleyball, :wheel_chair,
-    :windsurfing
+    :snowboarding, :snowshoeing, :soccer, :squash, :stair_climbing, :surfing,
+    :swimming, :tennis, :volleyball, :wheel_chair, :windsurfing
   ].freeze
 
   # enum activity_detected: ACTIVITIES
