@@ -7,8 +7,10 @@ class TrackingService
   end
 
   def track_geos
-    geotracks.each do |track|
-      point = GeoDataPoint.create!(geo_data_point_attributes(track))
+    GeoDataPoint.transaction do
+      geotracks.each do |track|
+        point = GeoDataPoint.create!(geo_data_point_attributes(track))
+      end
     end
   end
 
@@ -37,6 +39,7 @@ class TrackingService
   end
 
   def location(track)
+    return unless track.dig('geometry', 'coordinates')
     long = track.dig('geometry', 'coordinates')[0]
     lat = track.dig('geometry', 'coordinates')[1]
     alt = track.dig('properties', 'altitude')
