@@ -10,6 +10,10 @@ module Tracking
         user: User.first
       }).track_geos
 
+      SegmentService.new({
+        user: User.first
+      }).assign_segments
+
       render json: { 'result': ENV.fetch('OK_RESPONSE', 'ok') }
     end
   end

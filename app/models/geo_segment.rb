@@ -11,6 +11,6 @@ class GeoSegment < ApplicationRecord
     :windsurfing
   ].freeze
 
-  enum activity_detected: ACTIVITIES
+  # enum activity_detected: ACTIVITIES
   enum activity_selected: ACTIVITIES
 end
