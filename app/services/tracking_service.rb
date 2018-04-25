@@ -33,7 +33,7 @@ class TrackingService
       location: location(track),
       motion: motion(track),
       battery_state: track.dig('properties', 'battery_state').to_sym,
-      battery_level: track.dig('properties', 'battery_level'),
+      battery_level: battery_level(track),
       wifi: track.dig('properties', 'wifi')
     }
   end
@@ -55,6 +55,12 @@ class TrackingService
     return :cycling if motions.include? :cycling
     return :running if motions.include? :running
     :stationary
+  end
+
+  def battery_level(track)
+    bl = track.dig('properties', 'battery_level')
+    return unless bl
+    (bl.to_f * 100).to_i
   end
 
 end
