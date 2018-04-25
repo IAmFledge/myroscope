@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407152215) do
+ActiveRecord::Schema.define(version: 20180425081939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20180407152215) do
     t.datetime "updated_at", null: false
     t.index ["geo_segment_id"], name: "index_geo_data_points_on_geo_segment_id"
     t.index ["location"], name: "index_geo_data_points_on_location", using: :gist
+    t.index ["user_id", "motion"], name: "index_geo_data_points_on_user_id_and_motion"
+    t.index ["user_id", "occurred_at"], name: "index_geo_data_points_on_user_id_and_occurred_at"
     t.index ["user_id"], name: "index_geo_data_points_on_user_id"
   end
 
