@@ -3,7 +3,16 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # GeoDataPoint.delete_all
-    @geos = GeoDataPoint.where(user: current_user)
+    @date = Date.parse(dashboard_params[:date] || Date.today.to_s)
+    @geos = GeoDataPoint.where(
+      user: current_user,
+      occurred_at: @date.to_time.beginning_of_day...@date.to_time.end_of_day
+    )
+  end
+
+  private
+
+  def dashboard_params
+    params.permit(:date)
   end
 end
