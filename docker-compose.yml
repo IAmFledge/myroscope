@@ -23,6 +23,7 @@ services:
     environment:
       - SEED_USER_EMAIL
       - SEED_USER_PASS
+      - MAPBOX_TOKEN
     depends_on:
       - db
       - redis

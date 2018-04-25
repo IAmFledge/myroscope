@@ -8,6 +8,10 @@ class DashboardController < ApplicationController
       user: current_user,
       occurred_at: @date.to_time.beginning_of_day...@date.to_time.end_of_day
     ).order(occurred_at: :desc)
+
+    @route = GeoJsonService.new({
+      geos: @geos
+    }).render_line
   end
 
   private

@@ -1,6 +1,23 @@
 h1 Geo for #{@date}
 
 - unless @geos.blank?
+
+  #map style='width: 1100px; height: 300px;'
+
+  javascript:
+   mapboxgl.accessToken = '#{ENV['MAPBOX_TOKEN']}';
+   var map = new mapboxgl.Map({
+     container: 'map',
+     style: 'mapbox://styles/mapbox/dark-v9',
+     zoom: 13,
+     center: [#{@geos.first.location.x}, #{@geos.first.location.y}]
+   });
+
+   map.on('load', function () {
+     map.addLayer(#{raw @route});
+   });
+
+  h1 LonLat
   - gas = @geos.first.attributes.keys
   table
     tr
