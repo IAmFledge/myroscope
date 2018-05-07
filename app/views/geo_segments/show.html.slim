@@ -1,0 +1,31 @@
+h1= @segment.id
+h3 Segment
+- attrs = @segment.attributes.keys
+table
+  tr
+    - attrs.each do |attribute|
+      td= attribute
+  tr
+    - attrs.each do |attribute|
+      td= @segment.send(attribute)
+
+h3 Points (#{@segment.geo_data_points.size})
+
+- if @segment.geo_data_points.size > 0
+  - gas = @segment.geo_data_points.first.attributes.keys
+  table
+    tr
+      th Anomoly
+      th Velocity
+      th Distance
+      th Time
+      - gas.each do |att|
+        th= att.titleize
+    - @segment.geo_data_points.each do |geo|
+      tr class=('anomaly' if geo.anomaly)
+        td= geo.anomaly
+        td= 0
+        td= 0
+        td= 0
+        - gas.each do |gatt|
+          td= geo.send(gatt)

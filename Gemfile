@@ -24,6 +24,8 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'font-awesome-rails'
 gem 'slim'
 
+gem 'jquery-rails'
+
 gem 'activerecord-postgis-adapter'
 
 # Use CoffeeScript for .coffee assets and views

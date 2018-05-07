@@ -4,17 +4,25 @@ class GeoJsonService
     @geos = params[:geos]
   end
 
-  def render_line
-    line_attributes.to_json
+  def render_line(color = :red)
+    line_attributes(color)
   end
 
   private
 
+  COLORS = {
+    red: '#f00',
+    pink: '#ff69b4',
+    green: '#32cd32',
+    blue: '#0ff',
+    grey: '#aaa'
+  }
+
   attr_reader :geos
 
-  def line_attributes
+  def line_attributes(color)
     {
-      id: 'route',
+      id: (5..300000).to_a.sample.to_s,
       type: 'line',
       source: {
         type: 'geojson',
@@ -32,7 +40,7 @@ class GeoJsonService
         'line-cap': 'round'
       },
       paint: {
-        'line-color': '#0FF',
+        'line-color': COLORS[color],
         'line-width': 3
       }
     }

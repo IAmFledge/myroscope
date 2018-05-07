@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425081939) do
+ActiveRecord::Schema.define(version: 20180507231225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,10 @@ ActiveRecord::Schema.define(version: 20180425081939) do
     t.string "wifi"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "anomaly"
     t.index ["geo_segment_id"], name: "index_geo_data_points_on_geo_segment_id"
     t.index ["location"], name: "index_geo_data_points_on_location", using: :gist
+    t.index ["user_id", "anomaly"], name: "index_geo_data_points_on_user_id_and_anomaly"
     t.index ["user_id", "motion"], name: "index_geo_data_points_on_user_id_and_motion"
     t.index ["user_id", "occurred_at"], name: "index_geo_data_points_on_user_id_and_occurred_at"
     t.index ["user_id"], name: "index_geo_data_points_on_user_id"
@@ -52,7 +54,7 @@ ActiveRecord::Schema.define(version: 20180425081939) do
 
   create_table "geo_segments", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "type"
+    t.integer "segment_type"
     t.integer "activity_detected"
     t.integer "activity_selected"
     t.datetime "started_at"

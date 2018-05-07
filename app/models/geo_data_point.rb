@@ -4,4 +4,11 @@ class GeoDataPoint < ApplicationRecord
 
   belongs_to :user
   belongs_to :geo_segment, optional: true
+
+  def self.clustered(points, distance)
+    arel_table = self.arel_table
+    select(
+      arel_table.st_clusterwithin(points, distance)
+    )
+  end
 end
